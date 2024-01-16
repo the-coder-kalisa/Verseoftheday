@@ -53,7 +53,7 @@ const postVerse = async () => {
 export default async function Home() {
   const verse = await getVerse();
 
-  cron.schedule("51 00 * * *", async () => {
+  cron.schedule("53 00 * * *", async () => {
     await postVerse();
   });
 
