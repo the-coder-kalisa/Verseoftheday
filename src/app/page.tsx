@@ -53,8 +53,9 @@ const postVerse = async () => {
 
 export default async function Home() {
   const verse = await getVerse();
+  console.log(webhook)
   // schedule for 01:05 every day
-  schedule.scheduleJob("25 1 * * *", async () => {
+  schedule.scheduleJob("27 1 * * *", async () => {
     console.log("posting verse");
     await postVerse();
   });
@@ -65,6 +66,7 @@ export default async function Home() {
         <Link href="/">
           <Image src={Logo} alt="logo" height={60} width={60} />
         </Link>
+        <div>{webhook}</div>
         <TooltipProvider>
           <Tooltip>
             <TooltipTrigger>
