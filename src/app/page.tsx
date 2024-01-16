@@ -39,7 +39,7 @@ export default async function Home() {
         </CardContent>
       </Card>
       <div className="fixed bottom-0 text-center w-full">
-        &copy; {new Date().getFullYear()} bible verse
+        &copy; {new Date().getFullYear()} verse of the day
       </div>
     </main>
   );

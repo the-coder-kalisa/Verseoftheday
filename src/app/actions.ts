@@ -29,9 +29,9 @@ export const postVerse = async () => {
     verse = await fetchVerse();
   }
   const payload = {
-    text: `*${verse!.bookname} ${verse!.chapter}:${verse!.verse}*\n${
-      verse!.text
-    }`,
+    text: `*Verse of the Day*\n${verse!.bookname} ${verse!.chapter}:${
+      verse!.verse
+    }\n${verse!.text}`,
   };
   const response = await fetch(webhook, {
     method: "POST",
@@ -40,7 +40,7 @@ export const postVerse = async () => {
   return response;
 };
 
-cron.schedule("0 9 * * *", async () => {
+cron.schedule("0 8 * * *", async () => {
   verse = await fetchVerse();
   await postVerse();
 });
