@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/tooltip";
 import { Separator } from "@/components/ui/separator";
 import Logo from "@/assets/logo.png";
+import Link from "next/link";
 
 export default async function Home() {
   const verse = await getVerse();
@@ -17,9 +18,9 @@ export default async function Home() {
   return (
     <main className="min-h-screen p-3 flex items-center flex-col justify-center">
       <div className="fixed w-full top-3 px-3 justify-between flex">
-        <a href="/">
+        <Link href="/">
           <Image src={Logo} alt="logo" height={60} width={60} />
-        </a>
+        </Link>
         <TooltipProvider>
           <Tooltip>
             <TooltipTrigger>
