@@ -10,8 +10,8 @@ import {
 import { Separator } from "@/components/ui/separator";
 import Logo from "@/assets/logo.png";
 import Link from "next/link";
-import cron from "node-cron";
 import { Verse } from "@/types/verse";
+import schedule from 'node-schedule'
 
 let verse: Verse | null = null;
 
@@ -43,6 +43,7 @@ const postVerse = async () => {
       verse!.chapter
     }:${verse!.verse}\n${verse!.text}`,
   };
+  console.log("posting verse");
   const response = await fetch(webhook, {
     method: "POST",
     body: JSON.stringify(payload),
@@ -53,7 +54,8 @@ const postVerse = async () => {
 export default async function Home() {
   const verse = await getVerse();
 
-  cron.schedule("53 00 * * *", async () => {
+  // schedule for 01:05 every day
+  schedule.scheduleJob("7 1 * * *", async () => {
     await postVerse();
   });
 
