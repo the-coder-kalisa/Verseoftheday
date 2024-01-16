@@ -14,7 +14,7 @@ import Link from "next/link";
 
 export default async function Home() {
   const verse = await getVerse();
-
+  console.log(verse);
   return (
     <main className="min-h-screen p-3 flex items-center flex-col justify-center">
       <div className="fixed w-full top-3 px-3 justify-between flex">
