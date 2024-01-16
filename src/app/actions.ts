@@ -9,11 +9,12 @@ let url = "https://labs.bible.org/api/?passage=random&type=json";
 
 const webhook = process.env.SLACK_WEBHOOK_URL!;
 
+
 export const getVerse = async () => {
   if (!verse) {
     verse = await fetchVerse();
   }
-  return { ...verse, webhook };
+  return verse!;
 };
 
 export const fetchVerse = async () => {
@@ -29,9 +30,9 @@ export const postVerse = async () => {
     verse = await fetchVerse();
   }
   const payload = {
-    text: `<!channel> *Verse of the Day*\n${verse!.bookname} ${
-      verse!.chapter
-    }:${verse!.verse}\n${verse!.text}`,
+    text: `<!channel> *Verse of the Day*\n${verse!.bookname} ${verse!.chapter}:${
+      verse!.verse
+    }\n${verse!.text}`,
   };
   const response = await fetch(webhook, {
     method: "POST",
