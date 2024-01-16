@@ -1,4 +1,3 @@
-```
 # BibleVerseBot
 
 ![BibleVerseBot Logo](https://bible-verse-kappa.vercel.app/favicon.ico)
