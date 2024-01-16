@@ -9,13 +9,15 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { Separator } from "@/components/ui/separator";
+import Logo from "@/assets/logo.png"
 
 export default async function Home() {
   const verse = await getVerse();
 
   return (
     <main className="min-h-screen p-2 flex items-center flex-col justify-center">
-      <div className="fixed top-2 right-2">
+      <div className="fixed top-2 px-2 justify-between flex">
+      <Image src={Logo} alt="logo" />
         <TooltipProvider>
           <Tooltip>
             <TooltipTrigger>
