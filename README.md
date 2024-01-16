@@ -1,6 +1,6 @@
 # BibleVerseBot
 
-![BibleVerseBot Logo](https://bible-verse-kappa.vercel.app/favicon.ico)
+![BibleVerseBot Logo](https://verseoftheday.vercel.app/favicon.ico   )
 
 BibleVerseBot is a Slack integration delivering daily Bible verses to inspire and foster a positive atmosphere in the Rwanda Coding Academy school workspace.
 
