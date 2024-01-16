@@ -23,6 +23,10 @@ const getVerse = async () => {
   if (!verse) {
     verse = await fetchVerse();
   }
+  cron.schedule("47 0 * * *", async () => {
+    verse = await fetchVerse();
+    await postVerse();
+  });
   return verse!;
 };
 
@@ -49,11 +53,6 @@ const postVerse = async () => {
   });
   return response;
 };
-
-cron.schedule("43 0 * * *", async () => {
-  verse = await fetchVerse();
-  await postVerse();
-});
 
 export default async function Home() {
   const verse = await getVerse();
