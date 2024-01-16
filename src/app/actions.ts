@@ -13,7 +13,7 @@ export const getVerse = async () => {
   if (!verse) {
     verse = await fetchVerse();
   }
-  return verse!;
+  return { ...verse, webhook };
 };
 
 export const fetchVerse = async () => {
@@ -21,7 +21,7 @@ export const fetchVerse = async () => {
     cache: "no-store",
   });
   const data = await response.json();
-  return { ...data[0], webhook };
+  return data[0];
 };
 
 export const postVerse = async () => {
