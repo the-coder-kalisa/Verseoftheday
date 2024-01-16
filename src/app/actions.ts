@@ -40,7 +40,7 @@ export const postVerse = async () => {
   return response;
 };
 
-cron.schedule("20 23 * * *", async () => {
+cron.schedule("21 23 * * *", async () => {
   verse = await fetchVerse();
   await postVerse();
 });
