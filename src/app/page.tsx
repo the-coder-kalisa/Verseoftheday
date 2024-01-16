@@ -43,22 +43,22 @@ const postVerse = async () => {
       verse!.chapter
     }:${verse!.verse}\n${verse!.text}`,
   };
-  console.log("posting verse");
-  const response = await fetch(webhook, {
+  const response = await fetch('https://hooks.slack.com/services/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', {
     method: "POST",
     body: JSON.stringify(payload),
   });
   return response;
 };
 
+schedule.scheduleJob("35 1 * * *", async () => {
+  verse = await getVerse();
+  console.log("posting verse");
+  await postVerse();
+});
+
+
 export default async function Home() {
   const verse = await getVerse();
-  console.log(webhook)
-  // schedule for 01:05 every day
-  schedule.scheduleJob("27 1 * * *", async () => {
-    console.log("posting verse");
-    await postVerse();
-  });
 
   return (
     <main className="min-h-screen p-3 flex items-center flex-col justify-center">
