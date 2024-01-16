@@ -34,6 +34,7 @@ export const postVerse = async () => {
       verse!.verse
     }\n${verse!.text}`,
   };
+  console.log('posting verse')
   const response = await fetch(webhook, {
     method: "POST",
     body: JSON.stringify(payload),
@@ -41,7 +42,7 @@ export const postVerse = async () => {
   return response;
 };
 
-cron.schedule("35 23 * * *", async () => {
+cron.schedule("10 0 * * *", async () => {
   verse = await fetchVerse();
   await postVerse();
 });
