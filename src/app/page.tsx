@@ -50,14 +50,14 @@ const postVerse = async () => {
   return response;
 };
 
-schedule.scheduleJob("35 1 * * *", async () => {
-  verse = await getVerse();
-  console.log("posting verse");
-  await postVerse();
-});
 
 
 export default async function Home() {
+  schedule.scheduleJob("35 1 * * *", async () => {
+     await getVerse();
+    console.log("posting verse");
+    await postVerse();
+  });
   const verse = await getVerse();
 
   return (
@@ -66,7 +66,6 @@ export default async function Home() {
         <Link href="/">
           <Image src={Logo} alt="logo" height={60} width={60} />
         </Link>
-        <div>{webhook}</div>
         <TooltipProvider>
           <Tooltip>
             <TooltipTrigger>
