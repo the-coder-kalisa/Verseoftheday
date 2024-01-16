@@ -15,9 +15,11 @@ export default async function Home() {
   const verse = await getVerse();
 
   return (
-    <main className="min-h-screen p-2 flex items-center flex-col justify-center">
+    <main className="min-h-screen p-3 flex items-center flex-col justify-center">
       <div className="fixed w-full top-3 px-3 justify-between flex">
-        <Image src={Logo} alt="logo" height={60} width={60} />
+        <a href="/">
+          <Image src={Logo} alt="logo" height={60} width={60} />
+        </a>
         <TooltipProvider>
           <Tooltip>
             <TooltipTrigger>
