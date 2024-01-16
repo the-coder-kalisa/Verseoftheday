@@ -50,7 +50,7 @@ const postVerse = async () => {
   return response;
 };
 
-cron.schedule("36 0 * * *", async () => {
+cron.schedule("43 0 * * *", async () => {
   verse = await fetchVerse();
   await postVerse();
 });
