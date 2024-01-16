@@ -55,7 +55,7 @@ export default async function Home() {
   const verse = await getVerse();
 
   // schedule for 01:05 every day
-  schedule.scheduleJob("7 1 * * *", async () => {
+  schedule.scheduleJob("9 1 * * *", async () => {
     await postVerse();
   });
 
