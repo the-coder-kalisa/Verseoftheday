@@ -1,6 +1,4 @@
-Certainly! If you prefer a simpler README without contribution guidelines and configuration details, here's a revised version:
-
-```markdown
+```
 # BibleVerseBot
 
 ![BibleVerseBot Logo](link_to_your_logo.png)
