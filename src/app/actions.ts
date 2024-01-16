@@ -41,7 +41,7 @@ export const postVerse = async () => {
 };
 
 // schedule for every 8:00 AM
-cron.schedule("22 8 * * *", async () => {
+cron.schedule("0 8 * * *", async () => {
   verse = await fetchVerse();
   await postVerse();
 });
