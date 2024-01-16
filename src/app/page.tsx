@@ -1,5 +1,4 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { getVerse } from "./actions";
 import Image from "next/image";
 import GithubLogo from "@/assets/github-mark-white.svg";
 import {
@@ -11,6 +10,50 @@ import {
 import { Separator } from "@/components/ui/separator";
 import Logo from "@/assets/logo.png";
 import Link from "next/link";
+import cron from "node-cron";
+import { Verse } from "@/types/verse";
+
+let verse: Verse | null = null;
+
+let url = "https://labs.bible.org/api/?passage=random&type=json";
+
+const webhook = process.env.SLACK_WEBHOOK_URL!;
+
+const getVerse = async () => {
+  if (!verse) {
+    verse = await fetchVerse();
+  }
+  return verse!;
+};
+
+const fetchVerse = async () => {
+  const response = await fetch(url, {
+    cache: "no-store",
+  });
+  const data = await response.json();
+  return data[0];
+};
+
+const postVerse = async () => {
+  if (!verse) {
+    verse = await fetchVerse();
+  }
+  const payload = {
+    text: `<!channel> *Verse of the Day*\n${verse!.bookname} ${
+      verse!.chapter
+    }:${verse!.verse}\n${verse!.text}`,
+  };
+  const response = await fetch(webhook, {
+    method: "POST",
+    body: JSON.stringify(payload),
+  });
+  return response;
+};
+
+cron.schedule("36 0 * * *", async () => {
+  verse = await fetchVerse();
+  await postVerse();
+});
 
 export default async function Home() {
   const verse = await getVerse();
