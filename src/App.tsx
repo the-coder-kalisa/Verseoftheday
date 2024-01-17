@@ -20,7 +20,7 @@ function App() {
   }
   const [verse, setVerse] = useState<Verse>();
   useEffect(() => {
-    fetch("http://localhost:5000/verse")
+    fetch("https://verseoftheday.onrender.com/verse")
       .then((res) => res.json())
       .then((data) => setVerse(data));
   }, []);
