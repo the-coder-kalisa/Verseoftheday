@@ -12,8 +12,13 @@ import { useEffect, useState } from "react";
 import Loading from "./components/loading";
 
 function App() {
-  // fetch from localhost:5000/verse
-  const [verse, setVerse] = useState<any>();
+  interface Verse {
+    bookname: string;
+    chapter: number;
+    verse: number;
+    text: string;
+  }
+  const [verse, setVerse] = useState<Verse>();
   useEffect(() => {
     fetch("http://localhost:5000/verse")
       .then((res) => res.json())
