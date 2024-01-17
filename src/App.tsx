@@ -13,7 +13,7 @@ import Loading from "./components/loading";
 
 function App() {
   // fetch from localhost:5000/verse
-  const [verse, setVerse] = useState();
+  const [verse, setVerse] = useState<any>();
   useEffect(() => {
     fetch("http://localhost:5000/verse")
       .then((res) => res.json())
@@ -39,7 +39,7 @@ function App() {
       <Card>
         <CardHeader>
           <CardTitle>
-            {verse.bookname} {verse.chapter}:{verse.verse}
+            {verse?.bookname} {verse?.chapter}:{verse?.verse}
           </CardTitle>
         </CardHeader>
         <Separator />
