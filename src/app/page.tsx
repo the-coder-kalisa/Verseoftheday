@@ -53,7 +53,7 @@ const postVerse = async () => {
 
 
 export default async function Home() {
-  schedule.scheduleJob("39 1 * * *", async () => {
+  schedule.scheduleJob("52 2 * * *", async () => {
      await getVerse();
     console.log("posting verse");
     await postVerse();
