@@ -1,40 +1,30 @@
-# BibleVerseBot
+# React + TypeScript + Vite
 
-![BibleVerseBot Logo](https://verseoftheday.vercel.app/favicon.ico   )
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-BibleVerseBot is a Slack integration delivering daily Bible verses to inspire and foster a positive atmosphere in the Rwanda Coding Academy school workspace.
+Currently, two official plugins are available:
 
-## Features
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-- Daily delivery of uplifting Bible verses.
-- Seamless integration with Slack.
+## Expanding the ESLint configuration
 
-## Getting Started
+If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
 
-1. Clone the repository:
+- Configure the top-level `parserOptions` property like this:
 
-   ```bash
-   git clone https://github.com/your-username/BibleVerseBot.git
-   cd BibleVerseBot
-   ```
-
-2. Install dependencies:
-
-   ```bash
-   npm install
-   ```
-
-3. Run the application:
-
-   ```bash
-   npm start
-   ```
-
-4. Enjoy daily Bible verses in your Slack workspace!
-
----
-
-**Inspire, Reflect, Connect. BibleVerseBot - Bringing Daily Inspiration to Rwanda Coding Academy! 📖✨**
+```js
+export default {
+  // other rules...
+  parserOptions: {
+    ecmaVersion: 'latest',
+    sourceType: 'module',
+    project: ['./tsconfig.json', './tsconfig.node.json'],
+    tsconfigRootDir: __dirname,
+  },
+}
 ```
 
-Feel free to adjust any other details based on your preferences or specific project information.
+- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
+- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
+- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list

@@ -1,5 +1,3 @@
-"use client";
-import React from "react";
 import { FallingLines } from "react-loader-spinner";
 
 const Loading = () => {

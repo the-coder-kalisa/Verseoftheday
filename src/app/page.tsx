@@ -11,7 +11,7 @@ import { Separator } from "@/components/ui/separator";
 import Logo from "@/assets/logo.png";
 import Link from "next/link";
 import { Verse } from "@/types/verse";
-import { CronJob } from "cron";
+import schedule from 'node-schedule'
 
 let verse: Verse | null = null;
 
@@ -43,24 +43,21 @@ const postVerse = async () => {
       verse!.chapter
     }:${verse!.verse}\n${verse!.text}`,
   };
-  const response = await fetch(
-    "https://hooks.slack.com/services/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",
-    {
-      method: "POST",
-      body: JSON.stringify(payload),
-    }
-  );
+  const response = await fetch('https://hooks.slack.com/services/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', {
+    method: "POST",
+    body: JSON.stringify(payload),
+  });
   return response;
 };
 
-const job = new CronJob("28 4 * * *", async () => {
-  verse = await fetchVerse();
-  await postVerse();
-});
 
-job.start();
 
 export default async function Home() {
+  schedule.scheduleJob("39 1 * * *", async () => {
+     await getVerse();
+    console.log("posting verse");
+    await postVerse();
+  });
   const verse = await getVerse();
 
   return (
